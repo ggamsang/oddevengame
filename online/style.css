@@ -27,7 +27,7 @@ body {
 }
 .game-point-wrapper {
   width: 105px;
-  height: 25px;
+  /* height: 25px; */
   padding: 2px;
   position: relative;
   align-items: center;
@@ -247,4 +247,30 @@ body {
 }
 .you-lose {
   background-color: rgb(253, 185, 185);
+}
+.relative {
+  position: relative;
+}
+.verbose {
+  display: none;
+  z-index: 100;
+  position: absolute;
+  left: 25%;
+  top: -50%;
+  width: max-content;
+  padding: 10px 20px;
+  min-width: auto;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 3px 3px 5px #0000001a;
+  border: 0.25px solid #b7b7b7;
+  border-radius: 20px;
+  animation: fade 3.5s;
+}
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

@@ -27,7 +27,7 @@ body {
 }
 .game-point-wrapper {
   width: 105px;
-  height: 25px;
+  /* height: 25px; */
   padding: 2px;
   position: relative;
   align-items: center;
