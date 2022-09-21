@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>둘이서 하는 온라인 홀짝게임!</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+  </head>
+  <body>
+    <!-- title -->
+    <div class="to-center">
+      <h3>온라인홀짝게임!</h3>
+    </div>
+
+    <!-- toast -->
+    <div class="toast">토스트div: 개발중입니다...</div>
+
+    <!-- opponent section -->
+    <div class="row to-right push-down" id="user-section-B">
+      <div class="game-point-wrapper">
+        <div class="icon-point">
+          <img src="./imgs/coin.png" class="icon-coin" />
+        </div>
+        <div id="opponent-point" class="numbers">10</div>
+      </div>
+      <div class="profile">
+        <div class="profile-wrapper">
+          <img src="./imgs/profile.png" class="icon-profile" />
+        </div>
+        <div class="username-wrapper" id="user-name">유저B</div>
+      </div>
+    </div>
+
+    <!-- game section -->
+    <div class="game">
+      <div class="game-bg">&nbsp;</div>
+
+      <div class="game-content">
+        <!-- timer -->
+        <div class="timer" id="timer">
+          <img src="./imgs/clock.png" class="icon-clock" />
+          <div id="timeout" class="time">10</div>
+          <!-- <div class="time-bar">
+            <div id="time-bar-0per">&nbsp;</div>
+            <div id="time-bar-25per">&nbsp;</div>
+            <div id="time-bar-50per">&nbsp;</div>
+            <div id="time-bar-75per">&nbsp;</div>
+            <div id="time-bar-100per">&nbsp;</div>
+          </div> -->
+        </div>
+
+        <!--  -->
+        <div class="selector" id="selector">
+          <div class="to-center batting-wrapper" id="batting-slider-wrapper">
+            <div id="batting_point"></div>
+            <input type="range" min="1" id="batting-slider" max="" />
+          </div>
+          <div class="oddeven-wrapper">
+            <button id="button-select-odd" class="oddeven-button">
+              👍
+              <!-- (홀:odd) -->
+            </button>
+            <button id="button-select-even" class="oddeven-button">
+              ✌️
+              <!-- (짝:even) -->
+            </button>
+          </div>
+
+          <div class="to-center" id="radom-button-div">
+            <button id="button-select-random" class="random-button">
+              무작위
+            </button>
+          </div>
+
+          <div class="to-right" id="give-up-game">
+            <button id="button-select-give-up" class="giveup-button">
+              게임포기
+            </button>
+          </div>
+        </div>
+        <!--  -->
+
+        <!--  -->
+        <div class="modal" id="waiting-opponent">
+          <div class="to-center">
+            <div>
+              <h3>상대를 기다리고 있습니다.</h3>
+            </div>
+            <div><img src="./imgs/clock.png" class="icon-clock" /></div>
+            <br />
+          </div>
+        </div>
+        <!--  -->
+
+        <!--  -->
+        <div class="modal" id="you-choose-one">
+          <div class="to-center">
+            <div>
+              <h3>당신은 <b id="which-you-choose">??</b>을 선택하셨습니다.</h3>
+            </div>
+            <div><img src="./imgs/clock.png" class="icon-clock" /></div>
+            <br />
+            <div>상대의 선택을 기다립니다<span>...</span></div>
+          </div>
+        </div>
+        <!--  -->
+
+        <!-- you win! -->
+        <div class="modal" id="you-win">
+          <div class="to-center">
+            <div>
+              <h3>이번 라운드는 당신이 이겼습니다!</h3>
+            </div>
+            <div class="row">
+              <div>
+                <img src="./imgs/coin.png" class="icon-coin" />
+              </div>
+              <div class="row">
+                <div id="earn" class="numbers"></div>
+                <div>점 획득하셨습니다.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  -->
+
+        <!-- you lose -->
+        <div class="modal you-lose" id="you-lose">
+          <div class="to-center">
+            <div>
+              <h3>이번 라운드는 상대가 이겼습니다!</h3>
+            </div>
+            <div class="row">
+              <div>
+                <img src="./imgs/coin.png" class="icon-coin" />
+              </div>
+              <div class="row">
+                <div id="lose"></div>
+                <div>점 잃으셨습니다.</div>
+              </div>
+            </div>
+            <br />
+          </div>
+        </div>
+        <!--  -->
+
+        <!--  -->
+        <div></div>
+        <!--  -->
+      </div>
+    </div>
+    <!-- user section -->
+    <div class="row to-left push-up" id="user-section-A">
+      <div class="profile push-right">
+        <div class="profile-wrapper">
+          <img src="./imgs/profile.png" class="icon-profile" />
+        </div>
+        <div class="username-wrapper" id="user-name">유저A</div>
+      </div>
+      <div class="game-point-wrapper">
+        <div class="icon-point">
+          <img class="icon-coin" src="./imgs/coin.png" />
+        </div>
+        <div id="my-point" class="numbers">10</div>
+      </div>
+    </div>
+    <div id="debug"></div>
+  </body>
+</html>
+<script src="./script.js"></script>
