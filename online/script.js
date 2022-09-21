@@ -206,11 +206,11 @@ class Game {
       transports: ["websocket", "polling", "flashsocket"],
     })
       .on("open", () => {
+        this.setStatus("INIT");
         console.log("open");
-        this.setStatus("ZERO");
-        this.setInitTurn();
       })
       .on("join", () => {
+        this.setStatus("INIT");
         console.log("join");
         this.socket.emit("who are you?", {
           data: { user: this.user },
@@ -220,7 +220,6 @@ class Game {
           data: { status: "Ready", user: this.user },
           room: this.room,
         });
-        this.setStatus("ZERO");
       })
       .on("I'm ", async (obj) => {
         await this.setOpponent(obj.user);
@@ -244,12 +243,13 @@ class Game {
             });
             break;
           case "Ready":
+            this.setStatus("SELECT");
+
             // // console.log("Start", this.room);
             this.socket.emit("message", {
               data: { status: "Start" },
               room: this.room,
             });
-            this.setStatus("SELECT");
             console.log("ready to select");
             break;
           case "Start":
@@ -436,16 +436,16 @@ class Game {
         setTimeout(async () => {
           if (this.opponent.point > 0 && this.user.point > 0) {
             this.setTurn(!this.turn);
-            this.setStatus("INIT");
 
+            document.getElementById("you-lose").style.display = "none";
+            document.getElementById("you-win").style.display = "none";
             this.user.selected = null;
             this.opponent.selected = null;
 
-            !this.opener &&
-              this.socket.emit("message", {
-                data: { status: "Ready" },
-                room: this.room,
-              });
+            this.socket.emit("message", {
+              data: { status: "Ready" },
+              room: this.room,
+            });
           } else {
             if (this.opponent.point > this.user.point) {
               alert("상대가 이겼습니다. 게임을 다시 시작합니다!");
